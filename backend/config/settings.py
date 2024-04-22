@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'categories',
     'wiwako',
     'rest_framework',
+    'adminthings'
 ]
 
 MIDDLEWARE = [

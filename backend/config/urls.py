@@ -21,6 +21,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("wiwako/",include("wiwako.urls")),
+    path("adm/", include('adminthings.urls'))
 ]
 
 
