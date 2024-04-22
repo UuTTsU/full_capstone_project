@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'carousel',
     'categories',
     'wiwako',
-    'adminthings',
     'rest_framework',
 ]
 
