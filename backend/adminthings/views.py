@@ -32,3 +32,5 @@ class UpdateWiwakoProduct(generics.RetrieveUpdateDestroyAPIView):
     queryset = Wiwako.objects.all()
     serializer_class = WiwakoSerializer
     permission_classes = [IsAdminUser]
+    
+
