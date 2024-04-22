@@ -1,0 +1,72 @@
+*
+    padding: 0
+    margin: 0
+    list-style: none
+    text-decoration: none
+    box-sizing: border-box
+    font-family: 'Helvetica'
+    
+.content-container
+    max-width: 1224px
+    margin: 0 auto
+
+// .page-container
+//     width: 100%
+//     padding: 0 15% 
+
+$primary-color: #8BC34A
+$secondary-color: #AED581
+$background: #DCEEC8
+$h1: #484848
+$h2:#484848
+
+body
+    background-color: $background
+
+footer
+    height: 248px
+    background-color: #5B5B5B
+    padding: 40px 0
+    
+h1
+    color: $h1
+    margin-bottom: 20px
+h2
+    color: $h2
+    margin-bottom: 40px
+    
+@mixin horizontal($pos: center)
+    display: flex
+    justify-content: $pos
+    align-items: center
+
+@mixin verticalCenter($pos: center)
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: $pos
+
+@mixin plus450()
+    @media screen and (min-width: 450px)
+        @content
+
+@mixin plus600()
+    @media screen and (min-width: 600px)
+        @content
+
+@mixin plus769()
+    @media screen and (min-width: 769px)
+        @content
+
+@mixin plus1025()
+    @media screen and (min-width: 1025px)
+        @content
+
+@mixin plus1441()
+    @media screen and (min-width: 1441px)
+        @content
+
+@mixin plusCustom($cust)
+    @media screen and (min-width: $cust)
+        @content
+

@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Helvetica";
+}
+
+.content-container {
+  max-width: 1224px;
+  margin: 0 auto;
+}
+
+body {
+  background-color: #DCEEC8;
+}
+
+footer {
+  height: 248px;
+  background-color: #5B5B5B;
+  padding: 40px 0;
+}
+
+h1 {
+  color: #484848;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #484848;
+  margin-bottom: 40px;
+}/*# sourceMappingURL=helpers.css.map */
