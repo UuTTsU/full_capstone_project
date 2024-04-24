@@ -4,8 +4,10 @@ from rest_framework.response import Response
 from django.contrib.auth import authenticate, login
 from wiwako.models import Wiwako
 from carousel.models import CarouselItem
-from wiwako.serializers import WiwakoSerializer, CarouselItemSerializer
+from wiwako.serializers import WiwakoSerializer, CarouselItemSerializer,FeedbackSerializer
 from rest_framework.views import APIView
+from wiwako.models import Feedback
+
 class CustomLoginView(APIView):
     def post(self, request):
         username = request.data.get('username')
@@ -31,6 +33,14 @@ class UpdateWiwakoCarousel(generics.RetrieveUpdateDestroyAPIView):
 class UpdateWiwakoProduct(generics.RetrieveUpdateDestroyAPIView):
     queryset = Wiwako.objects.all()
     serializer_class = WiwakoSerializer
+    permission_classes = [IsAdminUser]
+class RetriveComments(generics.ListAPIView):
+    queryset = Feedback.objects.all()
+    serializer_class = FeedbackSerializer
+    permission_classes = [IsAdminUser]
+class UpdateComments(generics.RetrieveUpdateDestroyAPIView):
+    queryset  = Feedback.objects.all()
+    serializer_class = FeedbackSerializer
     permission_classes = [IsAdminUser]
     
 
