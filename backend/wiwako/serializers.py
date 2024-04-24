@@ -35,3 +35,9 @@ class CarouselItemSerializer(serializers.ModelSerializer):
 
 
 
+from .models import Feedback
+
+class FeedbackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feedback
+        fields = ('name', 'email', 'message')

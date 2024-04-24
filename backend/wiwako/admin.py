@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Wiwako
+from .models import Category, Wiwako,Feedback
 from carousel.models import CarouselItem
 
 
@@ -22,3 +22,9 @@ admin.site.register(Category)
 class CarouselItemAdmin(admin.ModelAdmin):
     list_display = ('title', 'wiwako', 'get_redirect_url')
     readonly_fields = ('get_redirect_url',)
+
+
+
+
+
+admin.site.register(Feedback)

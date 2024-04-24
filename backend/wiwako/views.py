@@ -7,6 +7,9 @@ from .serializers import WiwakoSerializer, CarouselItemSerializer
 from django.db.models import Q
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.permissions import AllowAny
+from .models import Feedback
+from .serializers import FeedbackSerializer
+from rest_framework.views import APIView
 # from rest_framework.views import APIView
 
 
@@ -68,3 +71,13 @@ class SearchResultsAPIView(ListAPIView):
              )
         
          return queryset
+     
+
+
+class SubmitFeedbackAPIView(APIView):
+    def post(self, request, format=None):
+        serializer = FeedbackSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return serializer.data
+        return serializer.errors
