@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-g_#ni+r&x)n16otvn0(&pbgu6-1p#nsfy8hih8^0(5i0#x6s@_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []  # es dasayenebelia 
 
 
 # Application definition
@@ -43,10 +43,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'adminthings',
     'drf_yasg',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -56,6 +59,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+  'http://localhost:8000',          #tu allowed hosts davayenebt aq local host iqneba shesacvleli
+)
 
 TEMPLATES = [
     {
@@ -124,14 +132,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = "/media/"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATICFILES_DIRS = [
-os.path.join(BASE_DIR, "static")
-]
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
