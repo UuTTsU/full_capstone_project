@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   backend:
@@ -22,7 +22,7 @@ services:
       - static:/static
       - frontend:/var/www/frontend
     ports:
-      - "8080:80"
+      - "80:80"
     depends_on:
       - backend
       - frontend
