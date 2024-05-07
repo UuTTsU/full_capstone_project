@@ -1,6 +1,6 @@
 from django.db import models
 from PIL import Image
-from config.wiwako.models import Wiwako
+from wiwako.models import Wiwako
 import os
 
 
