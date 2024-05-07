@@ -326,7 +326,8 @@ nav
     background-color: $ultra-light-green
     cursor: pointer
     @include plus769()
-        min-width: unset
+        min-width: 0
+        flex: 1
 .product-img
     width: 100%
     height: 200px
@@ -357,6 +358,9 @@ nav
     color: #2B2B2B
     font-size: 14px
     font-weight: 700
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
     @include plus1025()
         font-size: 28px
 

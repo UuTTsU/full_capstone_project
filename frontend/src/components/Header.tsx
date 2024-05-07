@@ -6,7 +6,7 @@ import BurgerMenu from '../assets/icons/burgerMenu.png'
 import LanguageDropdown from './LanguageDropdown'
 import { useTranslation } from 'react-i18next'
 import useFetch from '../hooks/useFetch'
-import { IProduct } from '../interfaces'
+import { ICategory, IProduct } from '../interfaces'
 import SearchInput from './SearchInput'
 
 
@@ -18,7 +18,7 @@ function Header() {
   const navRef = useRef<HTMLDivElement>(null)
   const {t, i18n} = useTranslation()
   const {getData, data} = useFetch()
-  const [categories, setCategories] = useState<{ enCategory: string; geoCategory: string; }[]>([])
+  const [categories, setCategories] = useState<ICategory[]>([])
 
 
   useEffect(() => {
@@ -37,18 +37,14 @@ function Header() {
   }, [])
 
   useEffect(() => {
-    getData({endpoint: 'bestSellers'})
+    const fetchData = async () => {
+      const res = await getData({endpoint: 'categories'})
+      setCategories(res as ICategory[])
+    }
+
+    fetchData()
   }, [])
 
-  useEffect(() => {
-    const categoriesList = data as IProduct[]
-    const mappedCategories = categoriesList?.map((category: IProduct) => ({
-      enCategory: category.enCategory,
-      geoCategory: category.geoCategory
-    }))
-
-    setCategories(mappedCategories)
-  }, [data])
 
   const capitalize = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1)
 

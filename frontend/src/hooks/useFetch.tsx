@@ -14,6 +14,7 @@ function useFetch() {
               if (docSnap.exists()) {
                 console.log(docSnap.data())
                 setData(docSnap.data() as IProduct)
+                return docSnap.data()
               } else {
                 if(id === null) console.error('Doc doesnt exist')
               }
@@ -21,6 +22,7 @@ function useFetch() {
               const dataSnapshot = await getDocs(collection(db, endpoint));
               const dataRes: IProduct[] = dataSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as IProduct));
               setData(dataRes)
+              return dataRes
             }
         } catch (error) {
             console.error(error)

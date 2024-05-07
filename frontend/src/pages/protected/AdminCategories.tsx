@@ -13,13 +13,21 @@ function AdminCategories() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        getData({endpoint: 'categories'})
-        setCategories(data as ICategory[])
-      }, [data])
+      fetchData()
+    }, [])
+
+    const fetchData = async () => {
+      const fetchedData = await getData({ endpoint: 'categories' })
+      setCategories(fetchedData as ICategory[])
+    }
 
     const addCategory = () => {
         navigate(`/admin/categories/${uuidv4()}`)
     }
+
+    const handleCategoryDeletion = async (categoryId: string) => {
+      await fetchData()
+  }
 
   return (
     <div className="admin-items-container">
@@ -31,7 +39,7 @@ function AdminCategories() {
       </div>
       <div className="admin-list-container">
         {categories?.map((each, index) => (
-            <CategoryItem key={each.id} id={each.id} category={i18n.language === 'en' ? each.enCategory : each.geoCategory} />
+            <CategoryItem key={each.id} id={each.id} category={i18n.language === 'en' ? each.enCategory : each.geoCategory}  onDelete={handleCategoryDeletion} />
         ))}
       </div>
     </div>

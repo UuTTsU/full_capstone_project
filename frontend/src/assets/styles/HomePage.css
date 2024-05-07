@@ -538,7 +538,8 @@ nav li > a:hover::after, nav li p:hover::after {
 }
 @media screen and (min-width: 769px) {
   .product-box {
-    min-width: unset;
+    min-width: 0;
+    flex: 1;
   }
 }
 
@@ -582,6 +583,9 @@ nav li > a:hover::after, nav li p:hover::after {
   color: #2B2B2B;
   font-size: 14px;
   font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 @media screen and (min-width: 1025px) {
   .product-name {

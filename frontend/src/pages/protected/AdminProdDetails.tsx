@@ -127,14 +127,14 @@ function AdminProdDetails() {
         </div>
         <div className="big-inputs">
           <ProdDescrInput
-            label="ინგლისური აღწერა"
-            value={prodInfo?.enDescr || ''}
-            onChange={(e) => handleProdInfoChange(e, 'enDescr')}
-          />
-          <ProdDescrInput
             label="ქართული აღწერა"
             value={prodInfo?.geoDescr || ''}
             onChange={(e) => handleProdInfoChange(e, 'geoDescr')}
+          />
+          <ProdDescrInput
+            label="ინგლისური აღწერა"
+            value={prodInfo?.enDescr || ''}
+            onChange={(e) => handleProdInfoChange(e, 'enDescr')}
           />
         </div>
         <ProdImageInput onChange={handleImageChange} onDeleteImage={onDeleteImage} prodImages={prodInfo?.images ?? []}/>

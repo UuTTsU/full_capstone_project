@@ -6,7 +6,7 @@ import useFetch from '../hooks/useFetch'
 import { doc, deleteDoc } from "firebase/firestore"
 import { db } from '../config/firebase'
 
-function CategoryItem({id, category} : {id: string, category: string}) {
+function CategoryItem({id, category, onDelete} : {id: string, category: string, onDelete: (categoryId: string) => void}) {
   const navigate = useNavigate()
   const {bestSellers} = useParams()
   const {getData} = useFetch()
@@ -17,7 +17,7 @@ function CategoryItem({id, category} : {id: string, category: string}) {
 
   const deleteItem = async () => {
       await deleteDoc(doc(db, 'categories', id))
-      getData({endpoint: 'categories'})
+      onDelete(id)
   }
   
   return (
