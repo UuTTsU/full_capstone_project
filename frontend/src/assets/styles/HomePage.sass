@@ -6,24 +6,115 @@ header
 
 .upper-header
     width: 100%
-    @include horizontal(space-around)
-    
+    padding: 0 16px
+    height: 90px
+    @include horizontal(space-between)
+
+.selected-lang
+    @include horizontal()
+    gap: 10px
+    cursor: pointer
+    &.active
+        background-color: $ultra-light-green
+        > img
+            transform: rotate(-90deg)
+    > img
+        transform: rotate(90deg)
+        transition: all 0.3s ease-in
+
+.burger-menu
+    @include plus769()
+        display: none
+.logo
+    @include plus769()
+        display: block !important
+    &.hidden
+        display: none
+.language-change-container
+    width: 100%
+    padding: 5px
+    padding-right: 10px
+    position: relative
+    border-radius: 4px
+    @include verticalCenter(flex-start)
+    gap: 10px
+    &.active
+        background-color: $ultra-light-green
+        @include plus769()
+            border-bottom-left-radius: 0
+            border-bottom-right-radius: 0
+            
+.language-icons-deskt
+    display: none
+    &.active
+        background-color: $ultra-light-green
+    @include plus769()
+        display: block
+
+.lang-option
+    position: absolute
+    top: 0
+    left: 0
+    z-index: -1
+    border-bottom-left-radius: 4px
+    border-bottom-right-radius: 4px
+    cursor: pointer
+    // transition: all 0.1s ease-in
+    &.active
+        top: 100%
+        z-index: 0
+        position: static
+        @include plus769()
+            width: 100%
+            position: absolute
+            left: 0
+            padding: 10px 5px
+            background-color: $ultra-light-green
+
+.language-icons-mob
+    @include plus769()
+        display: none
 
 nav
-    width: 100%
-    height: 56px
+    width: 60%
     background-color: $secondary-color
+    // display: none
+    position: absolute
+    z-index: 10
+    left: -100%
+    border-bottom-right-radius: 20px
+    overflow: hidden
+    transition: all 0.5s ease-in
+    @include plus769()
+        position: static
+        width: 100%
+        height: 56px
+        overflow: visible
+        border-radius: 0
+        display: block !important
+    &.open
+        display: block
+        left: 0
     ul
         width: 100%
         height: 100%
-        @include horizontal()
-        gap: 64px
+        background: rgb(219,31,53)
+        background: linear-gradient(180deg, rgba(219,31,53,1) 0%, rgba(139,195,74,1) 100%)
+        @include verticalCenter(flex-start)
+        gap: 32px
+        padding: 20px 10px !important
+        @include plus769()
+            background: unset
+            @include horizontal()
+            gap: 64px
     li
         > a, p
-            color: #5B5B5B
+            color: #fff
             font-size: 18px
             font-weight: 700
             position: relative
+            @include plus769()
+                color: #5B5B5B
             &::after
                 position: absolute
                 content: ''
@@ -38,12 +129,66 @@ nav
                 color: #C61915
                 &::after
                     width: 60%
-
+.search-field
+    @include horizontal()
+    position: relative
+    height: 25px
+    width: 20px
+    img
+        width: 18px
+        height: 18px
+        object-fit: cover
+        cursor: pointer
+        &.hidden
+            display: none
+    input
+        display: none
+        width: 50%
+        position: fixed
+        left: 50%
+        transform: translateX(-50%)
+        background-color: transparent
+        border-style: none
+        border-bottom: 1px solid #484848
+        padding-left: 10px
+        &::-webkit-search-cancel-button
+            appearance: none    
+        &:focus
+            outline: none
+        @include plus769()
+            width: 200px
+            position: absolute
+            transform: unset
+            left: unset
+            right: 0
+            bottom: -5px
+            padding-right: 30px
+        &.active
+            display: block
+            // visibility: visible
+.page-title
+    margin-bottom: 20px
+    padding-top: 14px
+    @include horizontal()
+    position: relative
+    @include plus769()
+        @include horizontal(start)
+        padding-top: 0
+    
+.go-back
+    position: absolute
+    left: 0
+    top: 50%
+    img
+        transform: rotate(-180deg)
+    @include plus769()
+        display: none
+    
 .catalogue-container
     position: relative
 
 .catalogue-btn
-    @include horizontal()
+    @include horizontal(start)
     gap: 14px
     cursor: pointer
     &.active
@@ -56,20 +201,24 @@ nav
 .catalogue-dropdown
     padding: 0 60px 0 10px
     width: max-content
-    height: 176px
-    position: absolute
-    left: 0
-    bottom: -190px
-    z-index: 2
     border-bottom-left-radius: 20px
     border-bottom-right-radius: 20px
-    background: rgb(219,31,53)
-    background: linear-gradient(180deg, rgba(219,31,53,1) 0%, rgba(139,195,74,1) 100%)
     display: none
+    @include plus769()
+        height: 176px
+        position: absolute
+        left: 0
+        bottom: -190px
+        z-index: 2
+        background: rgb(219,31,53)
+        background: linear-gradient(180deg, rgba(219,31,53,1) 0%, rgba(139,195,74,1) 100%)
     a
         color: #fff
         font-size: 18px
         font-weight: 700
+        margin-top: 10px
+        @include plus769()
+            margin-top: 0
     &.active
         @include verticalCenter(flex-start)
         justify-content: space-around
@@ -78,11 +227,14 @@ nav
         
 .hero-container
     width: 100%
-    height: 500px
+    height: 263px
     position: relative
     margin-top: 10px
-    margin-bottom: 32px
-
+    @include horizontal()
+    @include plus1025()
+        height: 500px
+        margin-bottom: 32px
+    
 .hero-banner
     object-fit: cover
     position: absolute
@@ -95,50 +247,95 @@ nav
 
 .hero-text
     position: absolute
-    width: 52%
-    height: 280px
-    border-radius: 40px
+    width: calc(100% - 32px)
+    border-radius: 21px
     @include verticalCenter(flex-start)
     justify-content: space-around
-    padding: 0 25px
-    left: 7.5%
-    top: 50%
-    transform: translateY(-50%)
-    z-index: 1
+    padding: 25px 12px
     background: rgb(219,31,53)
     background: linear-gradient(90deg, rgba(219,31,53, .6) 0%, rgba(139,195,74, .6) 100%)
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    z-index: 1
+    @include plus1025()
+        width: 60%
+        height: 280px
+        padding: 25px
+        border-radius: 40px
+        left: 7.5%
+        top: 50%
+        transform: translateY(-50%)
     h1, p
-        font-size: 40px
+        font-size: 16px
         font-weight: 700
         color: #fff
+        @include plus1025()
+            font-size: 40px
     p
-        font-size: 32px
+        font-size: 14px
+        line-height: 21px
+        @include plus1025()
+            font-size: 32px
+            line-height: 41px
 
 .popular-items-container
     width: 100%
-    padding: 30px 0 48px 0
-    background-color: $secondary-color
+    padding-bottom: 48px
+    background-color: $light-green
 
-.popular-items
+.popular-title-container
     width: 100%
-    @include horizontal()
+    background-color: #fff
+    padding: 20px 0
+    @include plus1025()
+        background-color: unset
+    .popular-title
+        max-width: 1224px
+        margin: 0 auto
+        padding: 0 16px
+    h2
+        margin-bottom: 0
+.popular-items
+    padding-top: 16px
+    @include horizontal(start)
     gap: 24px
+    overflow-x: auto
+    padding-bottom: 20px
+    @include plus769()
+        @include horizontal()
+    &::-webkit-scrollbar
+        height: 10px
+    &::-webkit-scrollbar-track
+        background: white
+        border-radius: 10px
+    &::-webkit-scrollbar-thumb
+        background-color: gray
+        border-radius: 10px
+        &:hover
+            background-color: darkgray
+
+        /* Color of the scrollbar thumb on hover
+
 
 .product-box
-    width: 100%    
-    height: 460px
+    min-width: 60%
+    width: 100%
     padding: 16px
     border-radius: 20px
-    background-color: #F1F9E9
-    box-shadow: inset -4px -6px 4px 0 rgba(#000000, .25)
+    background-color: $ultra-light-green
     cursor: pointer
-
+    @include plus769()
+        min-width: unset
 .product-img
     width: 100%
-    height: 364px
+    height: 200px
     border-top-left-radius: 16px
     border-top-right-radius: 16px
     overflow: hidden
+    margin-bottom: 5px
+    @include plus1025()
+        height: 364px
     img
         object-fit: cover
         width: 100%
@@ -151,13 +348,17 @@ nav
 .product-descr
     color: #A0A0A0
     margin-bottom: 10px
-    font-size: 16px
+    font-size: 12px
     font-weight: 700
+    @include plus1025()
+        font-size: 16px
 
 .product-name
     color: #2B2B2B
-    font-size: 28px
+    font-size: 14px
     font-weight: 700
+    @include plus1025()
+        font-size: 28px
 
 .product-price
     font-size: 24px
@@ -168,15 +369,22 @@ nav
 
 .some-plants-container
     width: 100%
-    padding: 56px 0
+    padding: 20px 0
+    @include plus1025()
+        padding-bottom: 72px
+
 .some-plants
     display: grid
-    grid-template-columns: repeat(4, 1fr)
+    grid-template-columns: repeat(2, 1fr)
     grid-gap: 24px
-    .product-box
-        height: 404px
+    @include plus600()
+        grid-template-columns: repeat(3, 1fr)
+    @include plus1025()
+        grid-template-columns: repeat(4, 1fr)
     .product-img
-        height: 267px
+        height: 158px
+        @include plus1025()
+            height: 267px
     .product-price
         display: block
 
@@ -214,7 +422,11 @@ nav
 
 .footer-container
     height: 100%
-    @include horizontal(space-between)
+    @include verticalCenter(flex-start)
+    gap: 26px
+    @include plus1025()
+        @include horizontal(space-between)
+        
 
 .footer-left
     @include verticalCenter(flex-start)
@@ -234,14 +446,27 @@ nav
     align-items: flex-end
     gap: 16px
     
-    
+.soc-img
+    width: 36px
+    height: 36px
+    @include plus1025()
+        width: 56px
+        height: 56px
+    img
+        width: 100%
+        height: 100%
+        object-fit: cover
 
 .breadcrumbs
-    @include horizontal(flex-start)
     padding: 26px 0
     gap: 10px
+    display: none
+    @include plus769()
+        @include horizontal(flex-start)
     a
         color: #838383
         font-weight: 700
         &.active
             color: #5B5B5B
+
+

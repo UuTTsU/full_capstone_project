@@ -1,0 +1,160 @@
+@import helpers
+
+.prod-page
+    width: 100%
+    min-height: 100vh
+    display: flex
+    flex-direction: column
+    
+.product-title-cont
+    width: 100%
+    @include plus769()
+        display: none
+
+.prod-content-container
+    @include plus769()
+        height: 629px
+        // margin-bottom: 133px
+        padding-bottom: 40px
+        @include horizontal()
+        gap: 26px
+
+.slider-container
+    width: 100%
+    @include plus769()
+        width: 40%
+        height: 100%
+
+.main-image
+    width: 100%
+    max-height: 358px
+    height: 358px
+    border-radius: 14px
+    overflow: hidden
+    @include plus769()
+        max-height: 83%
+        height: 83%
+    img
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+.img-pagination
+    margin: 20px 0
+    gap: 25px
+    @include horizontal()
+    @include plus769()
+        @include horizontal(space-between)
+        
+    
+.prod-images
+    @include horizontal(start)
+    width: 270px
+    overflow: auto
+    gap: 11px
+    @include plus769()
+        width: 368px
+    &::-webkit-scrollbar
+        display: none
+    img
+        max-width: 50px
+        max-height: 50px
+        cursor: pointer
+        @include plus769()
+            max-width: 80px
+            max-height: 80px
+
+.prev-img
+    transform: rotate(-180deg)
+
+.prev-img, .next-img
+    cursor: pointer
+    @include plus769()
+        width: 7px
+        height: 12px
+
+.prod-details-container
+    width: 100%
+    @include verticalCenter(flex-start)
+    justify-content: start
+    @include plus769()
+        width: 60%
+        height: 100%
+        padding: 16px
+        border-radius: 20px
+        background-color: $ultra-light-green
+    h1
+        display: none
+        color: #2B2B2B
+        font-size: 32px
+        @include plus769()
+            display: block
+
+.availability-status
+    color: #578C40
+    margin: 5px 0
+    @include plus769()
+        margin-bottom: 32px
+
+.prod-price
+    font-size: 32px
+    font-weight: 700
+    margin-bottom: 24px
+
+.detailed-descr
+    height: 100%
+    width: 100%
+    overflow: hidden
+    transition: all 0.3s ease-in
+    cursor: pointer
+    &.toggled
+        height: 40px
+
+.detailed-descr-btn
+    height: 40px
+    @include horizontal(start)
+    gap: 14px
+    @include plus769()
+        font-size: 18px
+        font-weight: 700
+    img
+        transform: rotate(-90deg)
+        transition: all 0.3s ease-in
+    &.toggled
+        img
+            transform: rotate(90deg)
+.prod-descr
+    padding-left: 10px
+    margin-top: 16px
+    padding-bottom: 20px
+    @include verticalCenter(flex-start)
+    gap: 10px
+    @include plus769()
+        max-height: 360px
+        font-size: 18px
+        font-weight: 700
+        overflow-y: auto
+
+.contact-for-details
+    width: 100%
+    margin-top: auto
+    display: none
+    @include plus769()
+        display: block
+    a
+        display: flex
+        width: max-content
+        padding: 5px 28px 5px 24px
+        border-radius: 20px
+        background-color: $primary-color
+        color:#2B2B2B
+        font-size: 18px
+        font-weight: 700
+        margin-left: auto
+
+
+.parahraph-container
+    @include horizontal(start)
+    align-items: flex-start
+    gap: 5px
+    

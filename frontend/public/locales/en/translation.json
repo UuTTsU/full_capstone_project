@@ -1,0 +1,18 @@
+{
+    "hero-banner": {
+        "upperText": "Tsitsako's bio farming",
+        "lowerText": "We offer beautiful potted vegetables to brighten up your balconies!"
+    },
+    "global": {
+        "popularProds": "Popular products",
+        "header": {
+            "home": "Home",
+            "aboutus": "About us",
+            "catalogue": "Catalogue",
+            "contact": "Contact"
+        },
+        "aboutusText": "Chitsako is an organic farm that offers beautiful decorative vegetables to beautify your balconies. Our plants are grown in a greenhouse, which protects them from external pollution, harmful insects and other natural phenomena and provides special taste properties. Our plants are sold in appropriate pots, with care instructions attached. The goal of our idea is to widely introduce the culture of growing vegetables with good taste properties with biological additives, which will help to encourage the production of organic farming among the local population, promote and develop urban gardening in city conditions.",
+        "ourPlants": "Our plants",
+        "noProducts": "No products found"
+    }
+}

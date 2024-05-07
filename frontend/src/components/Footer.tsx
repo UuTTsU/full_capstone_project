@@ -27,7 +27,7 @@ function Footer() {
                     <div className="icon-container">
                         <img src={Location} alt="" />
                     </div>
-                    <p>ანტონ წოფურაშვილის ქ. 1, ნორიო</p>
+                    <p>ანტონ ცოფურაშვილის ქ. 1, ნორიო</p>
                 </div>
             </div>
             <div className="footer-right">

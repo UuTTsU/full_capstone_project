@@ -8,68 +8,116 @@
 }
 
 .content-container {
-  max-width: 1224px;
+  max-width: 1256px;
+  width: 100%;
   margin: 0 auto;
+  padding: 0 16px;
 }
 
 body {
-  background-color: #DCEEC8;
+  background-color: #fff;
 }
 
 footer {
+  width: 100%;
   height: 248px;
   background-color: #5B5B5B;
   padding: 40px 0;
+  margin-top: auto;
 }
 
 h1 {
   color: #484848;
-  margin-bottom: 20px;
+  font-size: 18px;
+}
+@media screen and (min-width: 769px) {
+  h1 {
+    font-size: 32px;
+  }
 }
 
 h2 {
   color: #484848;
-  margin-bottom: 40px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  letter-spacing: 5px;
+}
+@media screen and (min-width: 1025px) {
+  h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+}
+
+.full-page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .products-container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 24px;
-  grid-row-gap: 70px;
+  grid-row-gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
 }
-.products-container .product-box {
-  height: 404px;
+@media screen and (min-width: 769px) {
+  .products-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 1025px) {
+  .products-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
 }
 .products-container .product-img {
-  height: 267px;
+  height: 158px;
+}
+@media screen and (min-width: 1025px) {
+  .products-container .product-img {
+    height: 267px;
+  }
 }
 .products-container .product-price {
   display: block;
 }
 
+.no-prod-text {
+  text-align: center;
+  margin: auto;
+}
+
 .pagination-container {
-  margin-top: 110px;
-  margin-bottom: 62px;
+  margin: 25px 0;
   position: relative;
 }
-.pagination-container::after {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 2px;
-  background-color: #C3C3C3;
-  border-radius: 2px;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%);
-  z-index: -1;
+@media screen and (min-width: 1025px) {
+  .pagination-container {
+    margin: 70px auto;
+  }
+  .pagination-container::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #C3C3C3;
+    border-radius: 2px;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+  }
 }
 
 .pagination-controls {
   width: 100%;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 16px;
@@ -81,6 +129,7 @@ h2 {
   border-radius: 50%;
   background-color: #C3C3C3;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -98,6 +147,7 @@ h2 {
 
 .pagination-pages {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -107,6 +157,7 @@ h2 {
   height: 32px;
   border-radius: 50%;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   color: #5B5B5B;
